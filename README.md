@@ -1,3 +1,3 @@
 # Conway's Game of Life
 
-Built with CanvasJS.
+Built with vanilla HTML, CSS, and JS.
