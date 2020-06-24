@@ -4,7 +4,23 @@
   width: 100vw;
 }
 
-canvas {
+#stage {
+  width: 600px;
+  height: 600px;
   margin: auto;
   border: 1px solid #000;
+}
+
+.square {
+  float: right;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.black {
+  background-color: #000;
+  border-color: #000;
 }
