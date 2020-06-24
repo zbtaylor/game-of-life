@@ -1,25 +1,28 @@
 const stage = new createjs.Stage("canvas");
 
-let i = 20;
+let y = 0;
 
 // Grid
-while (i <= 600) {
-  const lineY = new createjs.Shape();
-  const lineX = new createjs.Shape();
+while (y < 600) {
+  let x = 0;
 
-  stage.addChild(lineY);
-  lineY.graphics.setStrokeStyle(0.5).beginStroke("black");
-  lineY.graphics.moveTo(0, i);
-  lineY.graphics.lineTo(600, i);
-  lineY.graphics.endStroke();
+  while (x < 600) {
+    const square = new createjs.Shape();
+    square.graphics.setStrokeStyle(0.25).beginStroke("black");
+    square.graphics.drawRect(x, y, 20, 20);
+    square.graphics.endStroke();
+    stage.addChild(square);
 
-  stage.addChild(lineX);
-  lineX.graphics.setStrokeStyle(0.5).beginStroke("black");
-  lineX.graphics.moveTo(i, 0);
-  lineX.graphics.lineTo(i, 600);
-  lineX.graphics.endStroke();
+    square.on("click", (event) => {
+      console.log(event.target.graphics);
+      event.target.graphics.beginFill("black").endFill();
+      stage.addChild(event.target);
+      stage.update();
+    });
+    x += 20;
+  }
 
-  i += 20;
+  y += 20;
 }
 
 stage.update();
