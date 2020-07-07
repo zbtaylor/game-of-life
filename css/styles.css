@@ -32,11 +32,24 @@
 .alive {
   background-color: #000;
   border-color: #000;
-  color: #fff;
+}
+
+.red .cell.alive {
+  background-color: red;
+  border-color: red;
+}
+
+.blue .cell.alive {
+  background-color: blue;
+  border-color: blue;
 }
 
 .visible-text {
   color: rgba(0, 0, 0, 100) !important;
+}
+
+.visible-text .cell.alive {
+  color: #fff !important;
 }
 
 #controls {

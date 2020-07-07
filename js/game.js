@@ -6,6 +6,7 @@ const counter = document.getElementById("counter");
 const numbers = document.getElementById("numbers");
 const randomize = document.getElementById("randomize");
 const presets = document.getElementById("presets");
+const color = document.getElementById("color");
 const rowLength = 30;
 const total = rowLength * rowLength;
 let currentBuffer = [];
@@ -228,6 +229,7 @@ const loadPreset = (num) => {
       ];
       break;
     default:
+      break;
   }
 
   resetGame();
@@ -247,6 +249,22 @@ const generateRandom = () => {
   }
 };
 
+const changeColor = (color) => {
+  switch (color) {
+    case "black":
+      stage.classList = "";
+      break;
+    case "red":
+      stage.classList = "red";
+      break;
+    case "blue":
+      stage.classList = "blue";
+      break;
+    default:
+      break;
+  }
+};
+
 start.addEventListener("click", () => startGame());
 stop.addEventListener("click", () => stopGame());
 reset.addEventListener("click", () => resetGame());
@@ -254,6 +272,9 @@ numbers.addEventListener("click", () => toggleNumbers());
 randomize.addEventListener("click", () => generateRandom());
 presets.addEventListener("change", (e) => {
   loadPreset(e.target.value);
+});
+color.addEventListener("change", (e) => {
+  changeColor(e.target.value);
 });
 
 // Initial state
