@@ -127,9 +127,9 @@ const startGame = () => {
         currentBuffer = nextBuffer;
         // Update count
         count += 1;
-        counter.innerHTML = count;
+        counter.innerHTML = `Generation: ${count}`;
       }
-    }, 1000);
+    }, 500);
   }
 };
 
@@ -143,7 +143,7 @@ const resetGame = () => {
   window.clearInterval(game);
   game = undefined;
   count = 0;
-  counter.innerHTML = count;
+  counter.innerHTML = `Generation: ${count}`;
   createEmptyCells();
 };
 
