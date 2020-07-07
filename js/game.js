@@ -4,6 +4,7 @@ const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 const counter = document.getElementById("counter");
 const numbers = document.getElementById("numbers");
+const randomize = document.getElementById("randomize");
 const presets = document.getElementById("presets");
 const rowLength = 30;
 const total = rowLength * rowLength;
@@ -229,16 +230,28 @@ const loadPreset = (num) => {
     default:
   }
 
-  createDeadCells();
+  resetGame();
   cells.forEach((cell) => {
     currentBuffer[cell].click();
   });
+};
+
+const generateRandom = () => {
+  resetGame();
+  const limit = rowLength * rowLength;
+  for (let i = 0; i < limit; i++) {
+    const dice = Math.random() * Math.floor(6);
+    if (dice > 5) {
+      currentBuffer[i].click();
+    }
+  }
 };
 
 start.addEventListener("click", () => startGame());
 stop.addEventListener("click", () => stopGame());
 reset.addEventListener("click", () => resetGame());
 numbers.addEventListener("click", () => toggleNumbers());
+randomize.addEventListener("click", () => generateRandom());
 presets.addEventListener("change", (e) => {
   loadPreset(e.target.value);
 });

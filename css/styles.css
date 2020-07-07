@@ -26,11 +26,13 @@
   box-sizing: border-box;
   font-size: 8px;
   font-family: monospace;
+  cursor: pointer;
 }
 
 .alive {
   background-color: #000;
   border-color: #000;
+  color: #fff;
 }
 
 .visible-text {
