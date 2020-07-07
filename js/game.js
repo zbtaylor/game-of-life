@@ -4,6 +4,7 @@ const stop = document.getElementById("stop");
 const reset = document.getElementById("reset");
 const counter = document.getElementById("counter");
 const numbers = document.getElementById("numbers");
+const presets = document.getElementById("presets");
 const rowLength = 30;
 const total = rowLength * rowLength;
 let currentBuffer = [];
@@ -12,7 +13,7 @@ let count = 0;
 let game = undefined;
 let paused = false;
 
-const createEmptyCells = () => {
+const createDeadCells = () => {
   currentBuffer = [];
   stage.innerHTML = "";
 
@@ -129,7 +130,7 @@ const startGame = () => {
         count += 1;
         counter.innerHTML = `Generation: ${count}`;
       }
-    }, 500);
+    }, 250);
   }
 };
 
@@ -144,7 +145,7 @@ const resetGame = () => {
   game = undefined;
   count = 0;
   counter.innerHTML = `Generation: ${count}`;
-  createEmptyCells();
+  createDeadCells();
 };
 
 const toggleNumbers = () => {
@@ -156,11 +157,91 @@ const toggleNumbers = () => {
   }
 };
 
-// Controls
+const loadPreset = (num) => {
+  let cells = [];
+  switch (num) {
+    case "1":
+      cells = [404, 405, 406, 432, 433, 434];
+      break;
+    case "2":
+      cells = [1, 32, 33, 61, 62];
+      break;
+    case "3":
+      cells = [
+        222,
+        228,
+        252,
+        258,
+        282,
+        283,
+        287,
+        288,
+        338,
+        339,
+        340,
+        343,
+        344,
+        346,
+        347,
+        350,
+        351,
+        352,
+        370,
+        372,
+        374,
+        376,
+        378,
+        380,
+        402,
+        403,
+        407,
+        408,
+        462,
+        463,
+        467,
+        468,
+        490,
+        492,
+        494,
+        496,
+        498,
+        500,
+        518,
+        519,
+        520,
+        523,
+        524,
+        526,
+        527,
+        530,
+        531,
+        532,
+        582,
+        583,
+        587,
+        588,
+        612,
+        618,
+        642,
+        648,
+      ];
+      break;
+    default:
+  }
+
+  createDeadCells();
+  cells.forEach((cell) => {
+    currentBuffer[cell].click();
+  });
+};
+
 start.addEventListener("click", () => startGame());
 stop.addEventListener("click", () => stopGame());
 reset.addEventListener("click", () => resetGame());
 numbers.addEventListener("click", () => toggleNumbers());
+presets.addEventListener("change", (e) => {
+  loadPreset(e.target.value);
+});
 
 // Initial state
-createEmptyCells();
+createDeadCells();
